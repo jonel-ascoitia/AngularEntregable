@@ -45,7 +45,6 @@ export class UserUpdateComponent {
   this.newUser.lastname = String(this.formulario.controls.lastname.value);
 
   this.http.put(`https://entregablewed-bfegaygqf3b8ewar.chilecentral-01.azurewebsites.net/api/users/${id}`, this.newUser).subscribe(resultado => {
-      //console.log(resultado);
       this.showAlert("success", "Se actualizó correctamente");
     });
   }
@@ -62,7 +61,6 @@ export class UserUpdateComponent {
           toast.onmouseleave = Swal.resumeTimer;
         },
         didClose: () => {
-          //Codigo cuando termina la alerta.
           console.log("termino");
           this.router.navigate(["/"]);
         }
