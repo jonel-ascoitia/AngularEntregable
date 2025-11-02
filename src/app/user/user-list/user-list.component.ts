@@ -60,18 +60,23 @@ export class UserListComponent {
   }
 
   deleteUser(userId: number) {
-  Swal.fire({
-    title: "¿Estás seguro de eliminar?",
-    text: `Si estás seguro eliminar el registro ${userId}, Acepta`,
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Sí, eliminar"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      this.deleteUserById(userId);
-    }
+    Swal.fire({
+      title: "¿Estas seguro de eliminar?",
+      text: `Si estás seguro eliminar el registo ${userId}, Acepta`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, eliminar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteUserById(userId);
+        Swal.fire({
+          title: "Eliminado",
+          text: "El registro fue eliminado",
+          icon: "success"
+        });
+      }
   });
   }
 
@@ -82,25 +87,12 @@ export class UserListComponent {
     }
 
   deleteUserById(id: number){
-  this.http.delete(`https://entregablewed-bfegaygqf3b8ewar.chilecentral-01.azurewebsites.net/api/users/${id}`).subscribe({
-    next: () => {
-      const current = this.usersSubject.getValue();
-      this.usersSubject.next(current.filter(u => u.id !== id));
-      Swal.fire({
-        title: "Eliminado",
-        text: "El registro fue eliminado",
-        icon: "success"
-      });
-    },
-    error: err => {
-      console.error(err);
-      Swal.fire({
-        title: "Error",
-        text: "No se pudo eliminar el registro",
-        icon: "error"
-      });
-    }
-  });
+    this.http.delete(`https://entregablewed-bfegaygqf3b8ewar.chilecentral-01.azurewebsites.net/api/users/${id}`).pipe(
+      tap(() => {
+        const current = this.usersSubject.getValue();
+        this.usersSubject.next(current.filter(u => u.id !== id));
+    })
+    ).subscribe();
   }
 
   ngOnInit() {

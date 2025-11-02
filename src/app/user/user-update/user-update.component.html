@@ -1,5 +1,5 @@
 <div class="user-update-container">
-  <form class="form-control user-form shadow-sm" [formGroup]="formulario" (ngSubmit)="updateUser()">
+  <form class="form-control user-form shadow-sm" [formGroup]="formulario">
     <h3>Actualizar Usuario</h3>
 
     <div class="mb-3">
@@ -18,7 +18,7 @@
     </div>
 
     <div class="text-end mt-4">
-      <button type="submit" class="btn btn-success me-2">Actualizar</button>
+      <button class="btn btn-success me-2" (click)="updateUser()">Actualizar</button>
       <button class="btn btn-outline-secondary" (click)="navigateTo('/')">Regresar</button>
     </div>
   </form>
