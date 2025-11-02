@@ -44,7 +44,7 @@ export class UserUpdateComponent {
   this.newUser.name = String(this.formulario.controls.name.value);
   this.newUser.lastname = String(this.formulario.controls.lastname.value);
 
-  this.http.put(`https://entregablewed-bfegaygqf3b8ewar.chilecentral-01.azurewebsites.net/api/users${id}`, this.newUser).subscribe(resultado => {
+  this.http.put(`https://entregablewed-bfegaygqf3b8ewar.chilecentral-01.azurewebsites.net/api/users/${id}`, this.newUser).subscribe(resultado => {
       //console.log(resultado);
       this.showAlert("success", "Se actualizó correctamente");
     });
