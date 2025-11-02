@@ -1,17 +1,25 @@
-<form class="form-control" [formGroup]="formulario">
+<div class="user-add-container">
+  <form class="form-control user-form shadow-sm" [formGroup]="formulario">
+    <h3>Agregar Nuevo Usuario</h3>
 
-    <h3>Agregar nuevo usuario</h3>
-    
-    <label for="" class="form-label">Id</label>
-    <input type="text" class="form-control" formControlName="id">
+    <div class="mb-3">
+      <label class="form-label">Id</label>
+      <input type="text" class="form-control" formControlName="id">
+    </div>
 
-    <label for="" class="form-label">Name</label>
-    <input type="text" class="form-control" formControlName="name">
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="name">
+    </div>
 
-    <label for="" class="form-label">Lastname</label>
-    <input type="text" class="form-control" formControlName="lastname">
+    <div class="mb-3">
+      <label class="form-label">Apellido</label>
+      <input type="text" class="form-control" formControlName="lastname">
+    </div>
 
-    <br>
-    <button class="btn btn-primary" (click)="addNewUser()">Agregar</button>
-    <button class="btn btn-primary" (click)="navigateTo('/')">Regresar</button>
-</form>
+    <div class="text-end mt-4">
+      <button class="btn btn-success me-2" (click)="addNewUser()">Agregar</button>
+      <button class="btn btn-outline-secondary" (click)="navigateTo('/')">Regresar</button>
+    </div>
+  </form>
+</div>

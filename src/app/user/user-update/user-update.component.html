@@ -1,17 +1,26 @@
-<form class="form-control" [formGroup]="formulario">
-    <!--esto un ejemplo de cambia de la carpeta user-date-->>
+<div class="user-update-container">
+  <form class="form-control user-form shadow-sm" [formGroup]="formulario">
+    <h3>Actualizar Usuario</h3>
 
-    <h3>Actualizar usuario</h3>
-    <label for="" class="form-label">Id</label>
-    <input type="text" class="form-control" formControlName="id" readonly>
+    <div class="mb-3">
+      <label class="form-label">Id</label>
+      <input type="text" class="form-control" formControlName="id" readonly>
+    </div>
 
-    <label for="" class="form-label">Name</label>
-    <input type="text" class="form-control" formControlName="name">
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="name">
+    </div>
 
-    <label for="" class="form-label">Lastname</label>
-    <input type="text" class="form-control" formControlName="lastname">
+    <div class="mb-3">
+      <label class="form-label">Apellido</label>
+      <input type="text" class="form-control" formControlName="lastname">
+    </div>
 
-    <br>
-    <button class="btn btn-primary" (click)="updateUser()">Actualizar</button>
-    <button class="btn btn-primary" (click)="navigateTo('/')">Regresar</button>
-</form>
+    <div class="text-end mt-4">
+      <button class="btn btn-success me-2" (click)="updateUser()">Actualizar</button>
+      <button class="btn btn-outline-secondary" (click)="navigateTo('/')">Regresar</button>
+    </div>
+  </form>
+</div>
+
