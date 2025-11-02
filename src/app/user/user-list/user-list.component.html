@@ -11,13 +11,13 @@
         </tr>
       </thead>
       <tbody>
-        @for (user of (users | async); track user.id) {
-        <tr>
+        <!-- ngFor Angular -->
+        <tr *ngFor="let user of users">
           <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.lastname }}</td>
           <td class="text-center">
-            <a href="/user/update/{{user.id}}" class="btn btn-sm btn-outline-primary me-2">
+              <a href="/user/update/{{user.id}}"  class="btn btn-sm btn-outline-primary me-2">
               <i class="bi bi-pencil-fill"></i> Editar
             </a>
             <button class="btn btn-sm btn-outline-danger" (click)="deleteUser(user.id)">
@@ -25,11 +25,11 @@
             </button>
           </td>
         </tr>
-        } @empty {
-        <tr>
+
+        <!-- Mensaje si no hay usuarios -->
+        <tr *ngIf="!users || users.length === 0">
           <td colspan="4" class="text-center text-muted">Tabla Cargando.</td>
         </tr>
-        }
       </tbody>
     </table>
   </div>
