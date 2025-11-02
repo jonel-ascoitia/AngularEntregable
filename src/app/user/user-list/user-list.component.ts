@@ -87,7 +87,7 @@ export class UserListComponent {
     }
 
   deleteUserById(id: number){
-    this.http.delete(`https://entregablewed-bfegaygqf3b8ewar.chilecentral-01.azurewebsites.net/api/users${id}`).pipe(
+    this.http.delete(`https://entregablewed-bfegaygqf3b8ewar.chilecentral-01.azurewebsites.net/api/users/${id}`).pipe(
       tap(() => {
         const current = this.usersSubject.getValue();
         this.usersSubject.next(current.filter(u => u.id !== id));
